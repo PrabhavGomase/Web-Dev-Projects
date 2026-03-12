@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>Weather Explorer</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+<header>
+<h1>Weather Explorer</h1>
+<p class="subtitle">Check current weather conditions</p>
+
+<div class="search">
+<input id="cityInput" type="text" placeholder="Enter city name (e.g., Mumbai)">
+<button id="searchBtn">Search</button>
+</div>
+
+<p id="message"></p>
+
+</header>
+
+<div id="weatherContainer" class="hidden">
+
+<div class="main-weather">
+
+<h2 id="city"></h2>
+
+<div class="temp">
+<span id="temp"></span>°C
+</div>
+
+<div id="condition"></div>
+
+</div>
+
+<div class="weather-grid">
+
+<div class="card">
+<p>Humidity</p>
+<h3 id="humidity"></h3>
+</div>
+
+<div class="card">
+<p>Wind Speed</p>
+<h3 id="wind"></h3>
+</div>
+
+<div class="card">
+<p>Pressure</p>
+<h3 id="pressure"></h3>
+</div>
+
+<div class="card">
+<p>Feels Like</p>
+<h3 id="feels"></h3>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
