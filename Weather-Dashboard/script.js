@@ -1,4 +1,5 @@
-const apiKey = "API KEY"
+// Add your OpenWeather API key here
+const apiKey = "YOUR_API_KEY_HERE";
 
 const cityInput = document.getElementById("cityInput")
 const searchBtn = document.getElementById("searchBtn")
