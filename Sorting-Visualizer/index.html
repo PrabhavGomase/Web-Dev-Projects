@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sorting Algorithm Visualizer</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <div class="scanlines" aria-hidden="true"></div>
+  <div class="grid-bg"   aria-hidden="true"></div>
+
+  <div class="app">
+
+    <header class="header">
+      <div class="header-left">
+        <div class="status-dot" id="statusDot"></div>
+        <span class="status-text" id="statusText">READY</span>
+      </div>
+      <h1 class="title">
+        <span class="title-bracket">[</span>
+        SORTING VISUALIZER
+        <span class="title-bracket">]</span>
+      </h1>
+      <div class="header-right">
+        <span class="header-meta">v2.0</span>
+      </div>
+    </header>
+
+    <div class="info-bar">
+      <div class="info-chip">
+        <span class="chip-label">ALGORITHM</span>
+        <span class="chip-value" id="infoAlgo">Bubble Sort</span>
+      </div>
+      <div class="info-chip">
+        <span class="chip-label">ARRAY SIZE</span>
+        <span class="chip-value" id="infoSize">40</span>
+      </div>
+      <div class="info-chip">
+        <span class="chip-label">COMPARISONS</span>
+        <span class="chip-value mono" id="infoComps">0</span>
+      </div>
+      <div class="info-chip">
+        <span class="chip-label">SWAPS</span>
+        <span class="chip-value mono" id="infoSwaps">0</span>
+      </div>
+      <div class="info-chip">
+        <span class="chip-label">TIME</span>
+        <span class="chip-value mono" id="infoTime">0.00s</span>
+      </div>
+    </div>
+
+    <div class="visualizer-wrap">
+      <div class="visualizer" id="visualizer" aria-label="Sorting visualization"></div>
+ 
+      <div class="axis-x">
+        <span>0</span>
+        <span>n/2</span>
+        <span>n</span>
+      </div>
+    </div>
+
+    <div class="legend">
+      <div class="legend-item"><span class="swatch default"></span>Unsorted</div>
+      <div class="legend-item"><span class="swatch comparing"></span>Comparing</div>
+      <div class="legend-item"><span class="swatch pivot"></span>Pivot / Min</div>
+      <div class="legend-item"><span class="swatch sorted"></span>Sorted</div>
+    </div>
+
+    <div class="controls">
+
+
+      <div class="control-group">
+        <label class="ctrl-label" for="algoSelect">ALGORITHM</label>
+        <div class="select-wrap">
+          <select id="algoSelect" class="ctrl-select">
+            <option value="bubble">Bubble Sort</option>
+            <option value="selection">Selection Sort</option>
+            <option value="insertion">Insertion Sort</option>
+            <option value="merge">Merge Sort</option>
+            <option value="quick">Quick Sort</option>
+          </select>
+          <span class="select-arrow">▾</span>
+        </div>
+      </div>
+
+ 
+      <div class="control-group">
+        <label class="ctrl-label" for="sizeRange">ARRAY SIZE <span id="sizeVal">40</span></label>
+        <input type="range" id="sizeRange" class="ctrl-range" min="10" max="100" value="40" step="5"/>
+      </div>
+
+
+      <div class="control-group">
+        <label class="ctrl-label" for="speedRange">SPEED <span id="speedVal">5</span></label>
+        <input type="range" id="speedRange" class="ctrl-range" min="1" max="10" value="5" step="1"/>
+      </div>
+
+      <div class="btn-group">
+        <button class="btn btn-secondary" id="generateBtn">
+          <span class="btn-icon">⟳</span> New Array
+        </button>
+        <button class="btn btn-primary" id="sortBtn">
+          <span class="btn-icon" id="sortIcon">▶</span>
+          <span id="sortLabel">Start Sorting</span>
+        </button>
+      </div>
+
+    </div>
+
+ 
+    <div class="complexity-panel">
+      <div class="panel-title">COMPLEXITY ANALYSIS</div>
+      <table class="complexity-table" id="complexityTable">
+        <thead>
+          <tr>
+            <th>Algorithm</th>
+            <th>Best</th>
+            <th>Average</th>
+            <th>Worst</th>
+            <th>Space</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-algo="bubble" class="active-row">
+            <td>Bubble Sort</td>
+            <td class="green">Ω(n)</td>
+            <td class="yellow">Θ(n²)</td>
+            <td class="red">O(n²)</td>
+            <td>O(1)</td>
+          </tr>
+          <tr data-algo="selection">
+            <td>Selection Sort</td>
+            <td class="yellow">Ω(n²)</td>
+            <td class="yellow">Θ(n²)</td>
+            <td class="red">O(n²)</td>
+            <td>O(1)</td>
+          </tr>
+          <tr data-algo="insertion">
+            <td>Insertion Sort</td>
+            <td class="green">Ω(n)</td>
+            <td class="yellow">Θ(n²)</td>
+            <td class="red">O(n²)</td>
+            <td>O(1)</td>
+          </tr>
+          <tr data-algo="merge">
+            <td>Merge Sort</td>
+            <td class="green">Ω(n log n)</td>
+            <td class="green">Θ(n log n)</td>
+            <td class="green">O(n log n)</td>
+            <td class="yellow">O(n)</td>
+          </tr>
+          <tr data-algo="quick">
+            <td>Quick Sort</td>
+            <td class="green">Ω(n log n)</td>
+            <td class="green">Θ(n log n)</td>
+            <td class="red">O(n²)</td>
+            <td>O(log n)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
